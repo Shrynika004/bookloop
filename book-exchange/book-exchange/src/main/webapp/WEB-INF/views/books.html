@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<h2 th:text="'Welcome ' + ${user.username}"></h2>
+
+<!-- Show messages -->
+<div th:if="${sellMessage}" style="color: green;">[[${sellMessage}]]</div>
+<div th:if="${purchaseMessage}" style="color: blue;">[[${purchaseMessage}]]</div>
+
+<!-- Seller Section -->
+<div th:if="${user.role == 'SELLER'}">
+    <h3>Sell Book</h3>
+    <form action="/sell" method="post">
+        <input name="title" placeholder="Book Title" required>
+        <input name="price" type="number" step="0.01" placeholder="Price" required>
+        <input name="contact" placeholder="Contact" required>
+        <button type="submit">Sell Book</button>
+    </form>
+</div>
+
+<!-- Buyer Section -->
+<div th:if="${user.role == 'BUYER'}">
+    <h3>Available Books</h3>
+    <div th:each="book : ${books}">
+        <h4 th:text="${book.title}"></h4>
+        <p>Price: ₹<span th:text="${book.price}"></span></p>
+        <p>Contact: <span th:text="${book.contact}"></span></p>
+        <form action="/buy" method="post">
+            <input type="hidden" name="bookTitle" th:value="${book.title}">
+            <button type="submit">Purchase</button>
+        </form>
+    </div>
+</div>
+
+<form action="/logout" method="post">
+    <button type="submit">Logout</button>
+</form>
+</body>
+</html>

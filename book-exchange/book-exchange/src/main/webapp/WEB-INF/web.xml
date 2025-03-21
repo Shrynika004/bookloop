@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+         http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+    <display-name>Book Exchange App</display-name>
+
+    <!-- Define the main servlet -->
+    <servlet>
+        <servlet-name>BookServlet</servlet-name>
+        <servlet-class>com.bookexchange.controllers.BookServlet</servlet-class>
+    </servlet>
+
+    <!-- Map servlet to URLs -->
+    <servlet-mapping>
+        <servlet-name>BookServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+        <url-pattern>/books</url-pattern>
+        <url-pattern>/sell</url-pattern>
+        <url-pattern>/buy</url-pattern>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+    <!-- Set session timeout to 30 minutes -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+    <!-- Welcome Page -->
+    <welcome-file-list>
+        <welcome-file>login.jsp</welcome-file>
+    </welcome-file-list>
+
+</web-app>

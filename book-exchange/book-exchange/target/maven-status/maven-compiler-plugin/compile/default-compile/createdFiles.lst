@@ -1,0 +1,4 @@
+com\bookexchange\model\Book.class
+com\bookexchange\repository\BookRepository.class
+com\bookexchange\controllers\BookController.class
+com\bookexchange\model\User.class
